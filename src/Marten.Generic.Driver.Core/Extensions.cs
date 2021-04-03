@@ -22,12 +22,15 @@ namespace Marten.Generic.Driver.Core
             //    .GetSection(configSection)
             //    .GetValue<MartenOptions>(configSection);
 
-            var x = configuration["marten:connectionstring"];
-            //var y = configuration.GetSection("marten");
+            //var x = configuration["marten:connectionstring"];
+            var connectionstring = configuration
+                .GetSection("marten")
+                .Get<MartenOptions>()
+                .ConnectionString;
 
             services.AddMarten(opt =>
             {
-                opt.Connection(configuration["marten:connectionstring"]);
+                opt.Connection(connectionstring);
                 opt.AutoCreateSchemaObjects = AutoCreate.All;
             })
             .BuildSessionsWith<DefaultSessionFactory>();

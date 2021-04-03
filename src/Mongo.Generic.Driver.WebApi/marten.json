@@ -1,5 +1,6 @@
 {
 	"marten": {
-		"connectionstring": "host=localhost;database=my_db;password=password123;username=user"
+		"connectionstring": "host=localhost;database=my_db;password=password123;username=user",
+		"document":  "Product"
 	}
 }
