@@ -1,3 +1,4 @@
+using Marten.Generic.Driver.Core;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Mongo.Generic.Driver.Core;
@@ -15,7 +16,8 @@ namespace Mongo.Generic.Driver.WebApi
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseGenericMongo();
+                    //webBuilder.UseGenericMongo();
+                    webBuilder.UseGenericMarten();
                     webBuilder.UseStartup<Startup>();
                 });
     }

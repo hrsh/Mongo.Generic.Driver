@@ -5,15 +5,15 @@ using System.Linq.Expressions;
 
 namespace Mongo.Generic.Driver.WebApi
 {
-    public class CustomRepo : MongoRepository<Product>
-    {
-        public CustomRepo(IOptions<MongoOptions> options) : base(options)
-        {
-        }
+    //public class CustomRepo : MongoRepository<Product>
+    //{
+    //    public CustomRepo(IOptions<MongoOptions> options) : base(options)
+    //    {
+    //    }
 
-        public override Product Find(Expression<Func<Product, bool>> expression)
-        {
-            return base.Find(expression);
-        }
-    }
+    //    public override Product Find(Expression<Func<Product, bool>> expression)
+    //    {
+    //        return base.Find(expression);
+    //    }
+    //}
 }
