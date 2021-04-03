@@ -1,11 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using Mongo.Generic.Driver.Core;
 
 namespace Mongo.Generic.Driver.WebApi
 {
@@ -20,6 +15,7 @@ namespace Mongo.Generic.Driver.WebApi
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    webBuilder.UseGenericMongo();
                     webBuilder.UseStartup<Startup>();
                 });
     }
