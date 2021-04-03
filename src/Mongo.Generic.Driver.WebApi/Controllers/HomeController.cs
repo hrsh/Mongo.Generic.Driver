@@ -9,17 +9,23 @@ namespace Mongo.Generic.Driver.WebApi.Controllers
     public class HomeController : ControllerBase
     {
         private readonly IOptions<MongoOptions> _options;
+        private readonly IMongoRepository<Product> _repository;
 
-        public HomeController(IOptions<MongoOptions> options)
+        public HomeController(
+            IOptions<MongoOptions> options,
+            IMongoRepository<Product> repository)
         {
             _options = options;
+            _repository = repository;
         }
 
         [HttpGet, Route("~/")]
-        public string Index()
+        public IActionResult Index()
         {
-            return "MongoOptions: " + _options.Value.ConnectionString + ", " + _options.Value.Database
-                + ", " + _options.Value.Document;
+            //return "MongoOptions: " + _options.Value.ConnectionString + ", " + _options.Value.Database
+            //    + ", " + _options.Value.Document;
+
+            return Ok(_repository.List(a => a.Id));
         }
     }
 }

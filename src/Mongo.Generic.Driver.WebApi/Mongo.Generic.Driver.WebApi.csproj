@@ -1,11 +1,12 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Mongo.Generic.Driver.Core" Version="1.0.0" />
+    <ProjectReference Include="..\Mongo.Generic.Driver.Core\Mongo.Generic.Driver.Core.csproj" />
   </ItemGroup>
+
 
 </Project>

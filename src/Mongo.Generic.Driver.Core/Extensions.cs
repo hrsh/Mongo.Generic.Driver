@@ -19,6 +19,10 @@ namespace Mongo.Generic.Driver.Core
                 configuration.GetSection(configSection),
                 opt => configuration.Bind(opt));
 
+            services.AddScoped(
+                typeof(IMongoRepository<>),
+                typeof(MongoRepository<>));
+
             return services;
         }
 
@@ -31,6 +35,10 @@ namespace Mongo.Generic.Driver.Core
             var configuration = scope.ServiceProvider.GetRequiredService<IConfiguration>();
 
             services.Configure(action);
+
+            services.AddScoped(
+                typeof(IMongoRepository<>),
+                typeof(MongoRepository<>));
 
             return services;
         }

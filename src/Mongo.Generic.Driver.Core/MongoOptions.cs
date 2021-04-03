@@ -1,4 +1,6 @@
-﻿namespace Mongo.Generic.Driver.Core
+﻿using System;
+
+namespace Mongo.Generic.Driver.Core
 {
     public class MongoOptions
     {
@@ -7,5 +9,14 @@
         public string Database { get; set; }
 
         public string Document { get; set; }
+    }
+
+    internal static class MongoOptionsExtensions
+    {
+        public static void Guard(this MongoOptions mongoOptions)
+        {
+            if (string.IsNullOrEmpty(mongoOptions.ConnectionString))
+                throw new NullReferenceException("Connection string is not provided!");
+        }
     }
 }
