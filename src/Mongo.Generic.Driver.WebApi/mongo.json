@@ -1,6 +1,6 @@
 {
 	"mongo": {
-		"connectionstring": "mongodb://localhost:28000",
+		"connectionstring": "mongodb://localhost:28110",
 		"database": "my-db",
 		"document": "Product"
 	}
