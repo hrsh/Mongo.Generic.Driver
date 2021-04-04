@@ -1,3 +1,4 @@
+using EventStoreDb.Generic.Driver.Core;
 using Marten.Generic.Driver.Core;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
@@ -17,7 +18,8 @@ namespace Mongo.Generic.Driver.WebApi
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     //webBuilder.UseGenericMongo();
-                    webBuilder.UseGenericMarten();
+                    //webBuilder.UseGenericMarten();
+                    webBuilder.UseGenericEventStoreDb();
                     webBuilder.UseStartup<Startup>();
                 });
     }

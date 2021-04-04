@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mongo.Generic.Driver.WebApi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marten.Generic.Driver.Core", "src\Marten.Generic.Driver.Core\Marten.Generic.Driver.Core.csproj", "{D130CDA5-0D76-40B5-A99B-EEB52C886725}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventStoreDb.Generic.Driver.Core", "src\EventStoreDb.Generic.Driver.Core\EventStoreDb.Generic.Driver.Core.csproj", "{19C28E19-E671-4B7F-82B8-5A3D08AA32C5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -60,10 +62,23 @@ Global
 		{D130CDA5-0D76-40B5-A99B-EEB52C886725}.Release|x64.Build.0 = Release|Any CPU
 		{D130CDA5-0D76-40B5-A99B-EEB52C886725}.Release|x86.ActiveCfg = Release|Any CPU
 		{D130CDA5-0D76-40B5-A99B-EEB52C886725}.Release|x86.Build.0 = Release|Any CPU
+		{19C28E19-E671-4B7F-82B8-5A3D08AA32C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19C28E19-E671-4B7F-82B8-5A3D08AA32C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19C28E19-E671-4B7F-82B8-5A3D08AA32C5}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{19C28E19-E671-4B7F-82B8-5A3D08AA32C5}.Debug|x64.Build.0 = Debug|Any CPU
+		{19C28E19-E671-4B7F-82B8-5A3D08AA32C5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{19C28E19-E671-4B7F-82B8-5A3D08AA32C5}.Debug|x86.Build.0 = Debug|Any CPU
+		{19C28E19-E671-4B7F-82B8-5A3D08AA32C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19C28E19-E671-4B7F-82B8-5A3D08AA32C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19C28E19-E671-4B7F-82B8-5A3D08AA32C5}.Release|x64.ActiveCfg = Release|Any CPU
+		{19C28E19-E671-4B7F-82B8-5A3D08AA32C5}.Release|x64.Build.0 = Release|Any CPU
+		{19C28E19-E671-4B7F-82B8-5A3D08AA32C5}.Release|x86.ActiveCfg = Release|Any CPU
+		{19C28E19-E671-4B7F-82B8-5A3D08AA32C5}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{4AE07671-E3AF-46E3-9DF8-B8670D03C3BD} = {73BD7B01-2BB5-4090-9F8F-69BEDD9E5442}
 		{6D27B3DE-AF07-4EBF-B685-21472EC3F792} = {73BD7B01-2BB5-4090-9F8F-69BEDD9E5442}
 		{D130CDA5-0D76-40B5-A99B-EEB52C886725} = {73BD7B01-2BB5-4090-9F8F-69BEDD9E5442}
+		{19C28E19-E671-4B7F-82B8-5A3D08AA32C5} = {73BD7B01-2BB5-4090-9F8F-69BEDD9E5442}
 	EndGlobalSection
 EndGlobal

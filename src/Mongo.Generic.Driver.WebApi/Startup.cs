@@ -1,3 +1,4 @@
+using EventStoreDb.Generic.Driver.Core;
 using Marten.Generic.Driver.Core;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,7 +31,9 @@ namespace Mongo.Generic.Driver.WebApi
             //done
             //services.AddGenericMongo();
 
-            services.AddGenericMrten();
+            //services.AddGenericMrten();
+
+            services.AddGenericEventStoreDb();
 
 
             services.AddControllers();
