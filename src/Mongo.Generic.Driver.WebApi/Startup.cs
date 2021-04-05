@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Mongo.Generic.Driver.Core;
 using Redis.Cache.Driver;
 
 //https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-5.0
@@ -30,7 +31,7 @@ namespace Mongo.Generic.Driver.WebApi
             //});
 
             //done
-            //services.AddGenericMongo();
+            services.AddGenericMongo();
 
             //services.AddGenericMrten();
 

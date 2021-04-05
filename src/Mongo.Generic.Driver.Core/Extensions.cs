@@ -48,7 +48,7 @@ namespace Mongo.Generic.Driver.Core
             webHostBuilder.ConfigureAppConfiguration(cfg =>
             {
                 cfg.AddJsonFile("mongo.json", true, true);
-                
+
             });
             return webHostBuilder;
         }
@@ -63,8 +63,5 @@ namespace Mongo.Generic.Driver.Core
             });
             return webHostBuilder;
         }
-
     }
-
-
 }

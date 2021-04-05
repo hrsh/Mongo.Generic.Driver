@@ -16,17 +16,20 @@ namespace Mongo.Generic.Driver.WebApi.Controllers
     {
         private readonly IOptions<RedisOptions> _options;
         private readonly IRedisCache _cache;
+        private readonly IMongoRepository<Product> _repository;
 
         public HomeController(
             IOptions<RedisOptions> options,
-            IRedisCache cache)
+            IRedisCache cache,
+            IMongoRepository<Product> repository)
         {
             _options = options;
             _cache = cache;
+            _repository = repository;
         }
 
         [HttpGet, Route("~/")]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int sort = 1)
         {
             //return "MongoOptions: " + _options.Value.ConnectionString + ", " + _options.Value.Database
             //    + ", " + _options.Value.Document;
@@ -53,16 +56,19 @@ namespace Mongo.Generic.Driver.WebApi.Controllers
 
             //await _repository.AppendAsync(e);
 
-            await _cache.SetData<CustomEvent>("event_1", new CustomEvent
-            {
-                Data = "data",
-                EventId = Guid.NewGuid(),
-                EventType = "info",
-                MetaData = "meta data",
-                StreamName = "stream name"
-            });
+            //await _cache.SetData<CustomEvent>("event_1", new CustomEvent
+            //{
+            //    Data = "data",
+            //    EventId = Guid.NewGuid(),
+            //    EventType = "info",
+            //    MetaData = "meta data",
+            //    StreamName = "stream name"
+            //});
 
-            return Ok(await _cache.GetData<CustomEvent>("event_1"));
+            //return Ok(await _cache.GetData<CustomEvent>("event_1"));
+            var sortOrder = sort == 1 ? DocumentSortOrder.Asc : DocumentSortOrder.Desc;
+            var t = _repository.List(a => a.Id, sortOrder);
+            return Ok(t);
         }
     }
 }

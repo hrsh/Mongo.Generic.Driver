@@ -10,15 +10,16 @@ namespace Mongo.Generic.Driver.WebApi
     //    public int Price { get; set; }
     //}
 
-    public class Product : IMartenEntity
+    [DocumentName(nameof(Product))]
+    public class Product : MongoEntityBase
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
 
         public string Name { get; set; }
 
         public int Price { get; set; }
 
-        public string CoverImage { get; set; }
+        //public string CoverImage { get; set; }
 
         //public virtual int CategoryId { get; set; }
 

@@ -18,7 +18,7 @@ namespace Mongo.Generic.Driver.WebApi
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    //webBuilder.UseGenericMongo();
+                    webBuilder.UseGenericMongo();
                     //webBuilder.UseGenericMarten();
                     //webBuilder.UseGenericEventStoreDb();
                     webBuilder.UseRedisCache();

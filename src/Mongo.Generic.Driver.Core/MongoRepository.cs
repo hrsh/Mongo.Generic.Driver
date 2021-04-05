@@ -24,7 +24,8 @@ namespace Mongo.Generic.Driver.Core
             var client = new MongoClient(options.Value.ConnectionString);
             var database = client.GetDatabase(options.Value.Database);
 
-            _collection = database.GetCollection<TEntity>(options.Value.Document);
+            _collection = database
+                .GetCollection<TEntity>(typeof(TEntity).NameAttr<DocumentNameAttribute>());
         }
 
         public virtual void Create(TEntity model)
@@ -41,28 +42,49 @@ namespace Mongo.Generic.Driver.Core
             CancellationToken ct = default) =>
             await _collection.Find(expression).FirstOrDefaultAsync(ct);
 
-        public virtual List<TEntity> List<TKey>(Expression<Func<TEntity, TKey>> order) =>
-            _collection
-                .AsQueryable()
-                .OrderBy(order)
-                .ToList();
+        public virtual List<TEntity> List<TKey>(
+            Expression<Func<TEntity, TKey>> order,
+            DocumentSortOrder sortOrder,
+            Expression<Func<TEntity, bool>> predicate = null)
+        {
+            var query = predicate is null
+                ? _collection.AsQueryable()
+                : _collection.AsQueryable().Where(predicate);
+
+            var list = sortOrder == DocumentSortOrder.Asc
+                ? query.OrderBy(order).ToList()
+                : query.OrderByDescending(order).ToList();
+
+            return list;
+        }
 
         public virtual List<TEntity> List<TKey>(
-            Expression<Func<TEntity, TKey>> order, 
-            int pageIndex, 
-            int pageSize = 12)
+            Expression<Func<TEntity, TKey>> order,
+            DocumentSortOrder sortOrder,
+            int pageIndex,
+            int pageSize = 12,
+            Expression<Func<TEntity, bool>> predicate = null)
         {
-            var t = _collection
-                .AsQueryable()
-                .OrderBy(order)
-                .Skip(SkipCount())
-                .Take(PageSize())
-                .ToList();
+            var query = predicate is null
+                ? _collection.AsQueryable()
+                : _collection.AsQueryable().Where(predicate);
+
+            var list = sortOrder == DocumentSortOrder.Asc
+                ? query
+                    .OrderBy(order)
+                    .Skip(SkipCount())
+                    .Take(PageSize())
+                    .ToList()
+                : query
+                    .OrderBy(order)
+                    .Skip(SkipCount())
+                    .Take(PageSize())
+                    .ToList();
 
             int PageSize() => pageSize <= 0 ? 1 : pageSize;
             int SkipCount() => ((pageIndex <= 1 ? 1 : pageIndex) - 1) * PageSize();
 
-            return t;
+            return list;
         }
 
         public virtual void Update(Expression<Func<TEntity, bool>> expression, TEntity model) =>

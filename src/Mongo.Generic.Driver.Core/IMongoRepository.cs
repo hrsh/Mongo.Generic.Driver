@@ -14,12 +14,17 @@ namespace Mongo.Generic.Driver.Core
             Expression<Func<TEntity, bool>> expression,
             CancellationToken ct = default);
 
-        List<TEntity> List<TKey>(Expression<Func<TEntity, TKey>> order);
+        List<TEntity> List<TKey>(
+            Expression<Func<TEntity, TKey>> order,
+            DocumentSortOrder sortOrder,
+            Expression<Func<TEntity, bool>> predicate = null);
 
         List<TEntity> List<TKey>(
             Expression<Func<TEntity, TKey>> order,
+            DocumentSortOrder sortOrder,
             int pageIndex,
-            int pageSize = 12);
+            int pageSize = 12,
+            Expression<Func<TEntity, bool>> predicate = null);
 
         void Create(TEntity model);
 

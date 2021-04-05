@@ -7,8 +7,6 @@ namespace Mongo.Generic.Driver.Core
         public string ConnectionString { get; set; }
 
         public string Database { get; set; }
-
-        public string Document { get; set; }
     }
 
     internal static class MongoOptionsExtensions
