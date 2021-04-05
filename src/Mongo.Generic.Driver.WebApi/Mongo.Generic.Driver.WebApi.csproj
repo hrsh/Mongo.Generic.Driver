@@ -12,6 +12,11 @@
     <ProjectReference Include="..\EventStoreDb.Generic.Driver.Core\EventStoreDb.Generic.Driver.Core.csproj" />
     <ProjectReference Include="..\Marten.Generic.Driver.Core\Marten.Generic.Driver.Core.csproj" />
     <ProjectReference Include="..\Mongo.Generic.Driver.Core\Mongo.Generic.Driver.Core.csproj" />
+    <ProjectReference Include="..\Redis.Cache.Driver\Redis.Cache.Driver.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="certs\" />
   </ItemGroup>
 
 

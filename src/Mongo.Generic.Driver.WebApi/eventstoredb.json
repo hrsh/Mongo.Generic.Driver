@@ -1,7 +1,8 @@
 {
 	"eventstoredb": {
-		"connectionstring": "Connect To = tcp://admin:changeit@localhost:1113; HeartBeat Timeout = 500",
-		//"connectionstring": "tcp://admin:changeit@localhost:1113",
+		//"connectionstring": "tcp://localhost:1113;DefaultUserCredentials=admin:changeit;UseSslConnection=true;TargetHost=eventstore.org;ValidateServer=false",
+
+		"connectionstring": "tcp://admin:changeit@localhost:1113",
 		"isjson": true
 	}
 }

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Redis.Cache.Driver;
 
 //https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-5.0
 //https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options?view=aspnetcore-5.0
@@ -33,7 +34,15 @@ namespace Mongo.Generic.Driver.WebApi
 
             //services.AddGenericMrten();
 
-            services.AddGenericEventStoreDb();
+            //services.AddGenericEventStoreDb();
+
+            //services.AddRedisCache(opt =>
+            //{
+            //    opt.Server = "127.0.0.1";
+            //    opt.Port = "6379";
+            //});
+
+            services.AddRedisCache();
 
 
             services.AddControllers();

@@ -3,6 +3,7 @@ using EventStore.ClientAPI.SystemData;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System;
+using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -25,7 +26,7 @@ namespace EventStoreDb.Generic.Driver.Core
 
         public async Task AppendAsync(TEvent @event, CancellationToken ct = default)
         {
-            var connection = await Connection();
+            var connection = await GetConnection();
             _logger.LogInformation("Start EventStoreDb connection ...");
 
             var eventPayload = new EventData(
@@ -43,20 +44,34 @@ namespace EventStoreDb.Generic.Driver.Core
             {
                 _logger.LogCritical(ex.ToString());
             }
-
         }
 
-        private async Task<IEventStoreConnection> Connection()
+        private async Task<IEventStoreConnection> GetConnection()
         {
-            var settings = ConnectionSettings.Create();
-            settings.UseConsoleLogger();
-            settings.EnableVerboseLogging();
-            settings.SetDefaultUserCredentials(new UserCredentials("admin", "changeit"));
+            var settings = ConnectionSettings
+                .Create()
+                .UseConsoleLogger()
+                .EnableVerboseLogging()
+                .SetDefaultUserCredentials(new UserCredentials("admin", "changeit"))
+                .Build();
+
             var connection = EventStoreConnection.Create(
-                settings.Build(),
+                settings,
                 new Uri(_options.ConnectionString),
-                nameof(EventStoreDb));
+                "Mazdak");
             await connection.ConnectAsync();
+            connection.Connected += (s, e) =>
+            {
+                _logger.LogInformation(e.RemoteEndPoint.ToString());
+            };
+            connection.AuthenticationFailed += (s, e) =>
+            {
+                _logger.LogCritical($"Authentication failed => {e.Reason}.");
+            };
+            connection.Closed += (s, e) =>
+            {
+                _logger.LogCritical($"Connection closed => {e.Reason}.");
+            };
             return connection;
         }
     }

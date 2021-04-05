@@ -1,0 +1,11 @@
+{
+	"redis": {
+		"server": "localhost",
+		"port": "5002",
+		"password": "",
+		"InstanceName": "mazdak",
+		"ssl": false,
+		"AbsoluteExpireTime": "00.00:01:00.0000",
+		"SlidingExpiration": "00.00:01:00.0000"
+	}
+}

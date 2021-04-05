@@ -1,11 +1,13 @@
-using EventStoreDb.Generic.Driver.Core;
-using Marten.Generic.Driver.Core;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Mongo.Generic.Driver.Core;
-using Redis.Cache.Driver;
+using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace Mongo.Generic.Driver.WebApi
+namespace BlazorRedisCache
 {
     public class Program
     {
@@ -18,10 +20,6 @@ namespace Mongo.Generic.Driver.WebApi
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    //webBuilder.UseGenericMongo();
-                    //webBuilder.UseGenericMarten();
-                    //webBuilder.UseGenericEventStoreDb();
-                    webBuilder.UseRedisCache();
                     webBuilder.UseStartup<Startup>();
                 });
     }

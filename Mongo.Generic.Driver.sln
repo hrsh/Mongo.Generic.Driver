@@ -5,13 +5,17 @@ VisualStudioVersion = 16.6.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{73BD7B01-2BB5-4090-9F8F-69BEDD9E5442}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mongo.Generic.Driver.Core", "src\Mongo.Generic.Driver.Core\Mongo.Generic.Driver.Core.csproj", "{4AE07671-E3AF-46E3-9DF8-B8670D03C3BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mongo.Generic.Driver.Core", "src\Mongo.Generic.Driver.Core\Mongo.Generic.Driver.Core.csproj", "{4AE07671-E3AF-46E3-9DF8-B8670D03C3BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mongo.Generic.Driver.WebApi", "src\Mongo.Generic.Driver.WebApi\Mongo.Generic.Driver.WebApi.csproj", "{6D27B3DE-AF07-4EBF-B685-21472EC3F792}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mongo.Generic.Driver.WebApi", "src\Mongo.Generic.Driver.WebApi\Mongo.Generic.Driver.WebApi.csproj", "{6D27B3DE-AF07-4EBF-B685-21472EC3F792}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marten.Generic.Driver.Core", "src\Marten.Generic.Driver.Core\Marten.Generic.Driver.Core.csproj", "{D130CDA5-0D76-40B5-A99B-EEB52C886725}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Marten.Generic.Driver.Core", "src\Marten.Generic.Driver.Core\Marten.Generic.Driver.Core.csproj", "{D130CDA5-0D76-40B5-A99B-EEB52C886725}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventStoreDb.Generic.Driver.Core", "src\EventStoreDb.Generic.Driver.Core\EventStoreDb.Generic.Driver.Core.csproj", "{19C28E19-E671-4B7F-82B8-5A3D08AA32C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventStoreDb.Generic.Driver.Core", "src\EventStoreDb.Generic.Driver.Core\EventStoreDb.Generic.Driver.Core.csproj", "{19C28E19-E671-4B7F-82B8-5A3D08AA32C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorRedisCache", "src\BlazorRedisCache\BlazorRedisCache.csproj", "{EB3A03C8-B006-4C9B-B274-1BFE3662F11A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Redis.Cache.Driver", "src\Redis.Cache.Driver\Redis.Cache.Driver.csproj", "{47C431D7-6B0E-409A-915F-7AFEAD0AD698}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +25,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{4AE07671-E3AF-46E3-9DF8-B8670D03C3BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -74,11 +75,43 @@ Global
 		{19C28E19-E671-4B7F-82B8-5A3D08AA32C5}.Release|x64.Build.0 = Release|Any CPU
 		{19C28E19-E671-4B7F-82B8-5A3D08AA32C5}.Release|x86.ActiveCfg = Release|Any CPU
 		{19C28E19-E671-4B7F-82B8-5A3D08AA32C5}.Release|x86.Build.0 = Release|Any CPU
+		{EB3A03C8-B006-4C9B-B274-1BFE3662F11A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB3A03C8-B006-4C9B-B274-1BFE3662F11A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB3A03C8-B006-4C9B-B274-1BFE3662F11A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{EB3A03C8-B006-4C9B-B274-1BFE3662F11A}.Debug|x64.Build.0 = Debug|Any CPU
+		{EB3A03C8-B006-4C9B-B274-1BFE3662F11A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EB3A03C8-B006-4C9B-B274-1BFE3662F11A}.Debug|x86.Build.0 = Debug|Any CPU
+		{EB3A03C8-B006-4C9B-B274-1BFE3662F11A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB3A03C8-B006-4C9B-B274-1BFE3662F11A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB3A03C8-B006-4C9B-B274-1BFE3662F11A}.Release|x64.ActiveCfg = Release|Any CPU
+		{EB3A03C8-B006-4C9B-B274-1BFE3662F11A}.Release|x64.Build.0 = Release|Any CPU
+		{EB3A03C8-B006-4C9B-B274-1BFE3662F11A}.Release|x86.ActiveCfg = Release|Any CPU
+		{EB3A03C8-B006-4C9B-B274-1BFE3662F11A}.Release|x86.Build.0 = Release|Any CPU
+		{47C431D7-6B0E-409A-915F-7AFEAD0AD698}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47C431D7-6B0E-409A-915F-7AFEAD0AD698}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47C431D7-6B0E-409A-915F-7AFEAD0AD698}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{47C431D7-6B0E-409A-915F-7AFEAD0AD698}.Debug|x64.Build.0 = Debug|Any CPU
+		{47C431D7-6B0E-409A-915F-7AFEAD0AD698}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{47C431D7-6B0E-409A-915F-7AFEAD0AD698}.Debug|x86.Build.0 = Debug|Any CPU
+		{47C431D7-6B0E-409A-915F-7AFEAD0AD698}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47C431D7-6B0E-409A-915F-7AFEAD0AD698}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47C431D7-6B0E-409A-915F-7AFEAD0AD698}.Release|x64.ActiveCfg = Release|Any CPU
+		{47C431D7-6B0E-409A-915F-7AFEAD0AD698}.Release|x64.Build.0 = Release|Any CPU
+		{47C431D7-6B0E-409A-915F-7AFEAD0AD698}.Release|x86.ActiveCfg = Release|Any CPU
+		{47C431D7-6B0E-409A-915F-7AFEAD0AD698}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{4AE07671-E3AF-46E3-9DF8-B8670D03C3BD} = {73BD7B01-2BB5-4090-9F8F-69BEDD9E5442}
 		{6D27B3DE-AF07-4EBF-B685-21472EC3F792} = {73BD7B01-2BB5-4090-9F8F-69BEDD9E5442}
 		{D130CDA5-0D76-40B5-A99B-EEB52C886725} = {73BD7B01-2BB5-4090-9F8F-69BEDD9E5442}
 		{19C28E19-E671-4B7F-82B8-5A3D08AA32C5} = {73BD7B01-2BB5-4090-9F8F-69BEDD9E5442}
+		{EB3A03C8-B006-4C9B-B274-1BFE3662F11A} = {73BD7B01-2BB5-4090-9F8F-69BEDD9E5442}
+		{47C431D7-6B0E-409A-915F-7AFEAD0AD698} = {73BD7B01-2BB5-4090-9F8F-69BEDD9E5442}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1D7271FC-A83D-4003-ADCD-05165E9B2303}
 	EndGlobalSection
 EndGlobal

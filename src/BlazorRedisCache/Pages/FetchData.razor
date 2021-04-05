@@ -1,0 +1,90 @@
+﻿@page "/fetchdata"
+
+@*@using BlazorRedisCache.Data
+@using BlazorRedisCache
+@inject WeatherForecastService ForecastService
+@inject Microsoft.Extensions.Caching.Distributed.IDistributedCache cache
+<h1>Weather forecast</h1>
+
+<p>This component demonstrates fetching data from a service.</p>
+<button class="btn btn-primary" @onclick="LoadData">Load Data</button>
+<button class="btn btn-danger" @onclick="ClearCache">Clear cache</button>
+@if (forecasts is null && loadCollection == "")
+{
+    <p><em>Click button to load data ...</em></p>
+}
+else if (forecasts is null)
+{
+    <p><em>Loading ...</em></p>
+}
+
+@if (forecasts == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <h3 class="@isCahceData">@loadCollection</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Temp. (C)</th>
+                <th>Temp. (F)</th>
+                <th>Summary</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var forecast in forecasts)
+            {
+                <tr>
+                    <td>@forecast.Date.ToShortDateString()</td>
+                    <td>@forecast.TemperatureC</td>
+                    <td>@forecast.TemperatureF</td>
+                    <td>@forecast.Summary</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private WeatherForecast[] forecasts;
+
+    private string loadCollection = "";
+    private string isCahceData = "";
+
+    private const string cacheKey = "WeatherForecast";
+
+    private async Task LoadData()
+    {
+        forecasts = null;
+        loadCollection = null;
+        forecasts = await cache.GetData<WeatherForecast[]>(cacheKey);
+        if (forecasts is null)
+        {
+            forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+            loadCollection = $"Loaded from api at {DateTime.Now}";
+            isCahceData = "";
+
+            await cache.SetData(cacheKey, forecasts);
+        }
+        else
+        {
+            loadCollection = $"Loaded from cache at {DateTime.Now}";
+            isCahceData = "text-danger";
+        }
+    }
+
+    private async Task ClearCache()
+    {
+        await cache.ClearData(cacheKey);
+        loadCollection = "Cache is clear!";
+        isCahceData = "text-success";
+    }
+
+    //protected override async Task OnInitializedAsync()
+    //{
+    //    forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+    //}
+}*@

@@ -19,11 +19,6 @@ namespace Marten.Generic.Driver.Core
                 configuration.GetSection(configSection),
                 opt => configuration.Bind(opt));
 
-            //var options = configuration
-            //    .GetSection(configSection)
-            //    .GetValue<MartenOptions>(configSection);
-
-            //var x = configuration["marten:connectionstring"];
             var connectionstring = configuration
                 .GetSection(configSection)
                 .Get<MartenOptions>()
@@ -54,14 +49,12 @@ namespace Marten.Generic.Driver.Core
 
             services.Configure(action);
 
-            var connectionstring = configuration
-                .GetSection("marten")
-                .Get<MartenOptions>()
-                .ConnectionString;
+            var options = new MartenOptions();
+            action.Invoke(options);
 
             services.AddMarten(opt =>
             {
-                opt.Connection(connectionstring);
+                opt.Connection(options.ConnectionString);
                 opt.AutoCreateSchemaObjects = AutoCreate.All;
             })
             .BuildSessionsWith<DefaultSessionFactory>();
