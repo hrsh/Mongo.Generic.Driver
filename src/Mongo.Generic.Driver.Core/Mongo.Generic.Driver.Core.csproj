@@ -11,6 +11,8 @@
 		<PackageProjectUrl>https://github.com/hrsh/Mongo.Generic.Driver</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/hrsh/Mongo.Generic.Driver</RepositoryUrl>
 		<PackageTags>mongo,aspnetcore</PackageTags>
+		<Version>1.0.2</Version>
+		<AssemblyVersion>1.0.2.0</AssemblyVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
