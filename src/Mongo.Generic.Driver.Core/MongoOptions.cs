@@ -15,7 +15,8 @@ namespace Mongo.Generic.Driver.Core
 
         public string DbPassword { get; set; }
 
-        [Obsolete(message: "This property is obsolete and will remove in next release, please use Host instead!")]
+        public bool UseSecuredDatabase => !string.IsNullOrEmpty(DbUser) && !string.IsNullOrEmpty(DbPassword);
+
         public string Database { get; set; }
 
         public string SecuredConnectionString => $"mongodb://{DbUser}:{DbPassword}@{Host}:{Port}";

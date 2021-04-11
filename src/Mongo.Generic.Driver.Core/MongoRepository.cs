@@ -21,7 +21,10 @@ namespace Mongo.Generic.Driver.Core
 
             options.Value.Guard();
 
-            var client = new MongoClient(options.Value.ConnectionString);
+            var client = new MongoClient(
+                options.Value.UseSecuredDatabase 
+                ? options.Value.SecuredConnectionString
+                : options.Value.NonSecuredConnectionString);
             var database = client.GetDatabase(options.Value.Database);
 
             _collection = database
